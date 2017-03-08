@@ -1,6 +1,6 @@
 'use strict';
 
-const logEvent = require('../../domain/logevent/logevent');
+var logEvent = require('../../domain/logevent/logevent');
 
 function LogService(app) {
     app.get('/log', (request, response) => {  

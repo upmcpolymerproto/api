@@ -1,7 +1,7 @@
 'use strict';
-const BaseModel = require('../basemodel/basemodel');
-
+var BaseModel = require('../basemodel/basemodel');
 var _privateProp = "this is a private property";
+
 class LogEvent extends BaseModel {  
 
   constructor(type, user, value, fairWarning) {
