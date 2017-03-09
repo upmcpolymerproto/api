@@ -11,7 +11,7 @@ function LogService(app) {
         console.log(event.publicprop);
         console.log(event._privateProp);        
         
-        response.json(event);  
+        response.status(200).json(event);  
     })
 }
 

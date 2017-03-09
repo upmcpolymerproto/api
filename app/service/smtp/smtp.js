@@ -42,13 +42,13 @@ function EmailService(app) {
                 
         // send mail with defined transport object
         transporter.sendMail(email, (error, info) => {
-            if (error) {
-                return console.log(error);
+            if (error) {                
+                return response.status(500).send({error: error});
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
         })
         
-        response.send('email sent');
+        response.status(200).send('email sent');
     })
 }
 
