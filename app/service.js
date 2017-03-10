@@ -46,7 +46,7 @@ app.listen(port, (err) => {
     return console.log('something bad happened', err)
   }
 
-  console.log(`UPMC REST service API is listening on ${port}`)
+  console.log(`UPMC Express REST service API is listening on ${port}`)
 })
 
 app.use((request, response, next) => {  
