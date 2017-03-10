@@ -36,10 +36,28 @@ new logService(app);
 const emailService = require('../app/service/smtp/smtp');
 new emailService(app);
 
-// Define basic express routes
-app.get('/', (request, response) => {  
-  response.send('Hello from Express!')
-})
+// Different approach - handle things in a module type fashion. Display all routes in top level service
+const comms = require('../app/service/comms/comms');
+
+app.get('/comms/parrot/:message', (req, res, next) => {
+    return comms.parrot(req, res);
+    next();
+});
+
+app.get('/comms/angry-parrot/:message', (req, res, next) => {
+    return comms.angryParrot(req, res);
+    next();
+});
+
+app.get('/comms/echo/:message', (req, res, next) => {
+    return comms.echo(req, res);
+    next();
+});
+
+app.get('/comms/email', (req, res, next) => {
+    return comms.email(req, res);
+    next();
+});
 
 app.listen(port, (err) => {  
   if (err) {
