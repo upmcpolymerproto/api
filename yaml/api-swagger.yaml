@@ -1,0 +1,40 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: UPMC NodeJS API
+  description: Sample API Generated with Swagger
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+  - text/xml
+produces:
+  - application/json
+  - text/html
+paths:
+  /log:
+    get:
+      responses:
+        200:
+          description:  Creates log event
+          schema:
+            title: Log
+            type: object
+            items:
+              $ref: '#/definitions/LogEvent'
+    
+
+definitions:
+  LogEvent:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      user:
+        type: string
+      value:
+        type: string
