@@ -6,8 +6,8 @@ const app = express();
 var port = process.env.PORT || 3000; // Use port if defined in env variables
 var bodyParser = require('body-parser');
 
-//app.use(bodyParser.json()); // For parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+app.use(bodyParser.json()); // For parsing application/json
+//app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 // Add headers
 app.use(function (req, res, next) {
