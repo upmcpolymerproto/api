@@ -1,5 +1,5 @@
 /* Express */
-//require('./app/service');
+require('./app/service');
 
 /* Restify */
-require('./app/service-restify.js')
+//require('./app/service-restify.js')
