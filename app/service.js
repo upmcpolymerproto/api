@@ -3,17 +3,18 @@
 // Define express configuration
 const express = require('express');
 const app = express();
+const allowOrigin = "http://localhost:8080"; // Allow service calls from CoMIT UI
 var port = process.env.PORT || 3000; // Use port if defined in env variables
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.json()); // For parsing application/json
-//app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
+//app.use(bodyParser.json()); // For parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 // Add headers
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+    res.setHeader('Access-Control-Allow-Origin', allowOrigin);    
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

@@ -28,18 +28,18 @@ let transporter = nodemailer.createTransport({
 
 // setup email data with unicode symbols
 let defaultOptions = {
-    from: '"UPMC MR" <mr@upmc.edu>', // sender address
+    from: 'UPMC CoMIT <comit@upmc.edu>', // sender address
     to: 'santuccir@upmc.edu', // list of receivers
     subject: 'Test MR Email', // Subject line
     text: 'Hello world', // plain text body
     html: '<b>Hello world</b>' // html body
 };
 
-function EmailService(app) {
+function EmailService(app) {    
     app.post('/email', (request, response) => {
         console.log(request.body);
         var email = new emailMessage(request.body.from, request.body.to, request.body.subject, request.body.text);
-                
+           
         // send mail with defined transport object
         transporter.sendMail(email, (error, info) => {
             if (error) {                
