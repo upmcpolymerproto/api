@@ -37,7 +37,8 @@ let defaultOptions = {
 
 function EmailService(app) {    
     app.post('/email', (request, response) => {
-        console.log(request.body);
+        console.log(request);
+        //console.log(request.body);
         var email = new emailMessage(request.body.from, request.body.to, request.body.subject, request.body.text);
            
         // send mail with defined transport object

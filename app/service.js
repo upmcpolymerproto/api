@@ -3,7 +3,8 @@
 // Define express configuration
 const express = require('express');
 const app = express();
-const allowOrigin = "http://localhost:8080"; // Allow service calls from CoMIT UI
+//const allowOrigin = "http://localhost:8080"; // Allow service calls from CoMIT UI
+const allowOrigin = null;
 var port = process.env.PORT || 3000; // Use port if defined in env variables
 var bodyParser = require('body-parser');
 
@@ -12,9 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x
 
 // Add headers
 app.use(function (req, res, next) {
+ 
+    // If an allow origin has not been set, assume CoMIT UI is running locally on same server
+    var allow = allowOrigin || req.protocol + "://" + req.hostname + ":8080";
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', allowOrigin);    
+    res.setHeader('Access-Control-Allow-Origin', allow);    
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -66,9 +70,11 @@ app.listen(port, (err) => {
   }
 
   console.log(`UPMC Express REST service API is listening on ${port}`)
-})
+});
 
+/*
 app.use((request, response, next) => {  
   console.log(request.headers)
   next()
-})
+});
+*/
